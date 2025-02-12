@@ -1,5 +1,5 @@
 export async function getUserId(){
-    const res = await fetch("http://localhost:3000/getUserId" , {
+    const res = await fetch("https://chatverse-gld5.onrender.com/getUserId" , {
         method : "POST",
         headers:{
             'Content-Type' : 'application/json',
