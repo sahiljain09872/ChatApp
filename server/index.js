@@ -92,7 +92,7 @@ const verifyToken = (req, res, next) => {
 // Middleware to verify token for socket connections
 
 app.use(cors({
-    origin: 'http://localhost:5173', // Replace with your client's origin
+    origin: 'https://chatverse-gld5.onrender.com/', // Replace with your client's origin
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
     credentials: true // Allow cookies or credentials if required
 }));
