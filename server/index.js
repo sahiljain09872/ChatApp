@@ -60,18 +60,13 @@ const upload = multer({
 
 const io = socketIo(server, {
     cors: {
-        origin: function (origin, callback) {
-            if (!origin || allowedOrigins.includes(origin)) {
-                callback(null, true);
-            } else {
-                callback(new Error('Not allowed by CORS'));
-            }
-        },
+        origin: '*',  // Allows any origin
         methods: ['GET', 'POST', 'PUT', 'PATCH'],
         allowedHeaders: ['Authorization'],
-        credentials: true,
+        credentials: true,  // Allows cookies & authentication headers
     },
 });
+
 
 
 
