@@ -6,6 +6,7 @@ const http = require('http');
 const socketIo = require('socket.io');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const path = require("path");
 
 const mongoose = require("mongoose")
 
@@ -33,6 +34,8 @@ const app = express();
 const server = http.createServer(app);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.use((req, res, next) => {
     const origin = req.header("Origin");
@@ -653,8 +656,8 @@ app.get('/tokenVerification', verifyToken, (req, res) => {
     res.status(200).json({ message: "token is valid" });
 })
 
-app.get('/api/protected', (req, res) => {
-    res.send('This is a protected route');
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 });
 
 server.listen(PORT, () => {
