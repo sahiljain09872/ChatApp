@@ -3,7 +3,7 @@ export async function createRoom(data){
     // data is in json format
     console.log(data);
     try{
-        const res = await fetch('http://localhost:3000/rooms/createRoom' , {
+        const res = await fetch('https://chatverse-gld5.onrender.com/rooms/createRoom' , {
             method : 'POST',
             headers:{
                 'Content-Type' : 'application/json',
