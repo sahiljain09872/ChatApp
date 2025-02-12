@@ -14,7 +14,7 @@ const Chat = ({ chat, userId }) => {
   // Function to fetch signed URL for the file
   const fetchSignedUrl = async (filePath) => {
     try {
-      const res = await fetch(`http://localhost:3000/file/${filePath}`);
+      const res = await fetch(`https://chatverse-gld5.onrender.com/file/${filePath}`);
       const data = await res.json();
       if (data.url) {
         console.log("file url is -> ", data.url);
