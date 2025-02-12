@@ -125,7 +125,7 @@ io.on('connection', async (socket) => {
     console.log('New client connected ✅');
     // console.log("the socket has the info about the user ->", socket.user);
 
-    const res = await fetch('http://localhost:3000/rooms/allRooms', {
+    const res = await fetch('https://chatapp-gf0o.onrender.com/rooms/allRooms', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
