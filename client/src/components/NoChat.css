@@ -1,0 +1,86 @@
+/* NoRoomSelected.css */
+
+/* Overall container */
+.no-room-selected-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to bottom right, #e0f2fe, #6366f1);
+    height: 100%;
+  }
+  
+  /* Card container */
+  .card {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f8f9fa; /* Light background color */
+  }
+  
+  /* Header */
+  .header {
+    text-align: center;
+    gap: 16px;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1f2937;
+  }
+  
+  .subtitle {
+    font-size: 1.125rem;
+    color: #4b5563;
+  }
+  
+  /* Features */
+  .features {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .feature-title {
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 1.25rem;
+  }
+  
+  /* Call to Action */
+  .call-to-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    background-color: #2563eb;
+    border-radius: 1rem;
+    padding: 24px;
+    color: white;
+  }
+  
+  .cta-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  

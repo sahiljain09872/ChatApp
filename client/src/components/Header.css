@@ -1,0 +1,84 @@
+.chat-header {
+    display: flex; /* Align items horizontally */
+    align-items: center; /* Center vertically */
+    justify-content: space-between; /* Space out elements */
+    background-color: #ffffff; /* White background */
+    box-sizing: border-box;
+    width: 100%; /* Full width coverage */
+    padding: 15px 20px; /* Spacing around the header */
+    box-shadow: 0 4px 8px rgba(135, 206, 235, 0.2); /* Subtle sky-blue shadow */
+    border-radius: 0; /* No rounded corners for full coverage */
+  }
+  
+  .left-room-icon {
+    margin-right: 15px; /* Spacing between button and content */
+  }
+  
+  .left-arrow {
+    background-color: #ffffff; /* White background for a clean look */
+    color: #333; /* Neutral gray for the icon */
+    border: 2px solid #ddd; /* Subtle border for symmetry */
+    border-radius: 50%; /* Perfectly circular shape */
+    width: 40px; /* Equal width for symmetry */
+    height: 40px; /* Equal height for symmetry */
+    display: flex; /* Flexbox for centering */
+    align-items: center; /* Center icon vertically */
+    justify-content: center; /* Center icon horizontally */
+    cursor: pointer; /* Pointer cursor on hover */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: all 0.3s ease; /* Smooth transitions for hover effects */
+  }
+  
+  .left-arrow:hover {
+    background-color: #f9f9f9; /* Subtle gray hover background */
+    border-color: #ccc; /* Darker gray border on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    transform: scale(1.1); /* Slight zoom-in effect */
+  }
+  
+  
+  .roomIcon-description {
+    display: flex; /* Align icon and description horizontally */
+    align-items: center; /* Center items vertically */
+    flex: 1; /* Allow description to expand */
+    overflow: hidden; /* Ensure content doesn't overflow */
+  }
+  
+  .room-icon {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    background-color: #5f5dfd; /* Theme color */
+    color: #ffffff; /* White text for contrast */
+    border-radius: 50%; /* Circular icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 15px; /* Space after the icon */
+    font-size: 1.5rem; /* Bigger font for the icon */
+    box-shadow: 0 4px 8px rgba(95, 93, 253, 0.3); /* Soft shadow for the icon */
+  }
+  
+  .description {
+    flex: 1; /* Allow description to take remaining space */
+    overflow: hidden; /* Prevent overflow */
+  }
+  
+  .description h2 {
+    cursor : pointer;
+    margin: 0; /* Remove default margin */
+    font-size: 1.4rem; /* Bigger font for the room name */
+    font-weight: bold;
+    color: #333; /* Darker text color */
+  }
+  
+  .description p {
+    margin: 5px 0 0; /* Small margin on top */
+    font-size: 1rem; /* Standard font size */
+    color: #555; /* Lighter gray for secondary info */
+    white-space: nowrap; /* Prevent text wrap */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
+  }
+  

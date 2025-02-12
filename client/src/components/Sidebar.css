@@ -1,0 +1,415 @@
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+    width: 20%; /* Fixed sidebar width */
+    background-color: #f8f9fa; /* Light background color */
+    border-right: 1px solid #ddd; /* Subtle border */
+    padding: 10px;
+    box-sizing: border-box;
+    position: fixed; /* Fixes the sidebar for consistent positioning */
+    top: 0;
+    left: 0; /* Fixes it to the left side of the screen */
+    overflow: hidden; /* Ensures no overflow */
+    z-index: 10; /* Keeps it above other content */
+    
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.search-input {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+  background-color: #fff;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  background-color: #f9f9f9;
+}
+
+.search-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #888;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.search-icon:hover {
+  cursor: pointer;
+}
+
+.search-input:focus + .search-icon {
+  color: #007bff;
+}
+
+
+
+.logout-button i {
+  justify-self: flex-start;
+  font-size: 1.3rem; /* Set font size to 2rem */
+  color: #bf4c4c; /* Red color to signify logout */
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+
+.header-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+  /* background-color: #fff; */
+  /* border-bottom: 1px solid #ddd; */
+  height: 60px;
+
+}
+
+.logout-button {
+  position: absolute;
+  left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  font-size: 20px;
+  color: #333;
+  transition: transform 0.2s ease;
+}
+
+.logout-button:hover {
+  transform: scale(1.1);
+}
+
+.company-name {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+  /* Offset the width of the logout button to maintain true center */
+  padding-left: 40px;
+}
+
+.company-name {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #5f5dfd;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #5f5dfd, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+
+/* Room card container */
+.room-card {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+}
+
+.room-card:hover {
+  background-color: #eaeaea;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon container with position context for unseen count */
+.room-icon {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background-color: #007bff;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+/* Unseen count positioning */
+.unseen-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #000;
+  z-index: 1;
+}
+
+/* Room name styles */
+.room-name {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-grow: 1;
+}
+
+/* Room actions container */
+.room-actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  position: relative;
+}
+
+/* Room info button */
+.room-info-button {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.room-info-button:hover {
+  color: #333;
+}
+
+/* Keeping your existing dropdown styles */
+.room-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  min-width: 150px;
+  z-index: 1000;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: #333;
+  text-align: left;
+}
+
+.dropdown-item i {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdown-item.exit-room:hover {
+  color: #dc3545;
+}
+
+.dropdown-item.room-info:hover {
+  color: #007bff;
+}
+
+/* Animation for dropdown */
+@keyframes dropdownFade {
+  from {
+      opacity: 0;
+      transform: translateY(-10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.room-dropdown {
+  animation: dropdownFade 0.2s ease-out;
+}
+
+/* Rooms list container */
+.rooms-list {
+  flex: 1;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.rooms-list::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
+
+
+/* perfect one styling of the room Card */
+
+
+
+.add-room-section {
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd; /* Divider above add-room section */
+}
+
+.add-room-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.add-room-button {
+    background-color: #5f5dfd; /* Main theme color */
+    color: #fff; /* Text color */
+    border: none; /* No border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 10px 15px; /* Spacing inside the button */
+    font-size: 1rem; /* Font size */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Pointer cursor on hover */
+    display: flex; /* Aligns icon */
+    align-items: center; /* Centers icon vertically */
+    justify-content: center; /* Centers content */
+    gap: 8px; /* Space between text and icon */
+    box-shadow: 0 4px 8px rgba(95, 93, 253, 0.3); /* Soft shadow */
+    transition: all 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .add-room-button i {
+    font-size: 1.2rem; /* Icon size */
+  }
+  
+  .add-room-button:hover {
+    background-color: #4d4bfc; /* Slightly darker color on hover */
+    box-shadow: 0 6px 12px rgba(95, 93, 253, 0.4); /* Larger shadow */
+  }
+  
+  .add-room-button:active {
+    transform: scale(0.95); /* Slight "press" effect */
+  }
+  
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #sidebar {
+        width: 100%; /* Full width on smaller screens */
+        height: auto;
+        position: relative;
+    }
+
+    .rooms-list {
+        max-height: 300px; /* Restrict height for better usability */
+    }
+}
+
+.unseen-count {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%); /* Center the circle vertically */
+  width: 30px; /* Larger size for the circle */
+  height: 30px; /* Larger size for the circle */
+  border-radius: 50%;
+  /* background-color: skyblue; */
+  background: linear-gradient(90deg, #6c5ce7, #74b9ff);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;  /* Adjust font size if necessary */
+  font-weight: bold;
+}
+
+
+.no-rooms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #5f5dfd;
+    font-size: 1rem;
+    padding: 20px;
+    flex: 1;
+  }
+  
+  .no-rooms-icon {
+    font-size: 4rem;
+    color: #5f5dfd;
+    margin-bottom: 20px;
+  }
+  
+  .no-rooms-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .no-rooms-description {
+    font-size: 1rem;
+    color: #555;
+  }
+
+  
+
+
+  .add-room-button {
+    background: linear-gradient(90deg, #6c5ce7, #74b9ff); /* Gradient button */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Button shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  /* Button hover and active states */
+  .add-room-button:hover {
+    transform: scale(1.05); /* Slight zoom */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Deeper shadow */
+  }
+  
+  .add-room-button:active {
+    transform: scale(0.95); /* Press-down effect */
+  }
+
+
+
+
+
+
+  /* before updated */
