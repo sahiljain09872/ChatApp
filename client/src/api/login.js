@@ -16,7 +16,7 @@ export async function loginUser(data) {
             localStorage.setItem('token', resData.token);
 
             // Redirect to the homepage
-            window.location.href = 'http://localhost:5173/';
+            window.location.href = 'https://chatapp-gf0o.onrender.com';
 
             return { success: true };
         } 
