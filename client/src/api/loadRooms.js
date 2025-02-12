@@ -1,5 +1,5 @@
 export async function loadRooms(){
-    const res = await fetch('http://localhost:3000/rooms/allRooms', {
+    const res = await fetch('https://chatverse-gld5.onrender.com/rooms/allRooms', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
