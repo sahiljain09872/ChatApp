@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Form.css"
 
-import { loginUser } from "../API/login";
+import { loginUser } from "../api/login";
 
 
 export default function LoginPage() {  
