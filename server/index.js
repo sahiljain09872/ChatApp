@@ -53,7 +53,7 @@ const upload = multer({
 
 const io = socketIo(server, {
     cors: {
-        origin: 'http://localhost:5173', // Allowed origin (your client URL)
+        origin: 'https://chatverse-gld5.onrender.com/', // Allowed origin (your client URL)
         methods: ['GET', 'POST', 'PUT', 'PATCH'],       // Allowed HTTP methods
         allowedHeaders: ['Authorization'], // Allowed headers
         credentials: true,              // Allow credentials like cookies
