@@ -34,6 +34,29 @@ const server = http.createServer(app);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use((req, res, next) => {
+    const origin = req.header("Origin");
+    const allowedOrigins = [
+        'https://chatapp-gf0o.onrender.com',
+        'https://chatverse-gld5.onrender.com'
+    ];
+
+    if (allowedOrigins.includes(origin)) {
+        res.header("Access-Control-Allow-Origin", origin);  // Dynamically set allowed origin
+    }
+    
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-Credentials", "true");
+    
+    if (req.method === "OPTIONS") {
+        return res.sendStatus(200);
+    }
+
+    next();
+});
+
+
 const { connectToDatabase } = require("./db.js");
 
 (async () => {
@@ -51,14 +74,23 @@ const upload = multer({
     storage: multer.memoryStorage(),
 });
 
+const allowedOrigins = [
+    'https://chatapp-gf0o.onrender.com',
+    'https://chatverse-gld5.onrender.com'
+];
+
 const io = socketIo(server, {
     cors: {
-        origin: 'https://chatapp-gf0o.onrender.com/', // Allowed origin (your client URL)
-        methods: ['GET', 'POST', 'PUT', 'PATCH'],       // Allowed HTTP methods
+        origin: [
+            'https://chatapp-gf0o.onrender.com',
+            'https://chatverse-gld5.onrender.com'
+        ], // Allow multiple origins
+        methods: ['GET', 'POST', 'PUT', 'PATCH'], // Allowed HTTP methods
         allowedHeaders: ['Authorization'], // Allowed headers
-        credentials: true,              // Allow credentials like cookies
+        credentials: true, // Allow credentials like cookies
     },
 });
+
 
 // app.use("/api", uploadRoutes)
 
@@ -91,10 +123,17 @@ const verifyToken = (req, res, next) => {
 
 // Middleware to verify token for socket connections
 
+
 app.use(cors({
-    origin: 'https://chatapp-gf0o.onrender.com/', // Replace with your client's origin
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
-    credentials: true // Allow cookies or credentials if required
+    origin: function (origin, callback) {
+        // Allow requests without origin (e.g., from Postman or server-to-server requests)
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,  // Allow credentials if needed
 }));
 
 io.use((socket, next) => {
@@ -125,7 +164,7 @@ io.on('connection', async (socket) => {
     console.log('New client connected ✅');
     // console.log("the socket has the info about the user ->", socket.user);
 
-    const res = await fetch('http://localhost:3000/rooms/allRooms', {
+    const res = await fetch('https://chatverse-gld5.onrender.com/rooms/allRooms', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
