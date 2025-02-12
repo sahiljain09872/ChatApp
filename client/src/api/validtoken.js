@@ -3,7 +3,7 @@ export async function validtoken(){
     if(!token){
         return { success: false, message: 'User not logged in' };
     }
-    const res = await fetch('http://localhost:3000/tokenVerification', {
+    const res = await fetch('https://chatverse-gld5.onrender.com/tokenVerification', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
