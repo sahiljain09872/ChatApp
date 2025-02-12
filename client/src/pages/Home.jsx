@@ -28,7 +28,7 @@ export default function Home() {
     validtoken().then((res) => {
       if (res.success) {
         setLoggedIn(true);
-        const socket = io("http://localhost:3000", {
+        const socket = io("https://chatverse-gld5.onrender.com", {
           auth: {
             token: `Bearer ${localStorage.getItem("token")}`,
           },
