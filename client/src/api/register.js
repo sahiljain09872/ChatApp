@@ -17,7 +17,7 @@ export async function registerUser(data){
             console.log("User registered" , res);
             localStorage.setItem('token' , resData.token);
 
-            window.location.href = 'http://localhost:5173/';
+            window.location.href = 'https://chatapp-gf0o.onrender.com';
 
             return {success : true};
         } else if (res.status == 409){
