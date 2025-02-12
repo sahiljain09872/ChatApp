@@ -2,7 +2,7 @@ export async function registerUser(data){
     console.log("data to registerUser" , data)
     console.log("call to registerUser");
     try{
-        const res = await fetch('http://localhost:3000/register', {
+        const res = await fetch('https://chatverse-gld5.onrender.com/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
