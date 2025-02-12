@@ -1,6 +1,6 @@
 export async function loadChats(data){
     console.log("call to loadChats");
-    const res = await fetch('http://localhost:3000/chats/allChats' , {
+    const res = await fetch('https://chatverse-gld5.onrender.com/chats/allChats' , {
         method:"POST",
         headers: {
             'Content-Type': 'application/json',
