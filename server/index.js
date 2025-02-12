@@ -28,18 +28,11 @@ const roomRoutes = require('./Routes/roomRoutes');
 const uploadRoutes = require("./Routes/uploadRoutes");
 
 
-const allowedOrigins = [
-  'https://chatverse-gld5.onrender.com', 
-  'https://chatapp-gf0o.onrender.com'
-];
-
-
 // file handling
 const app = express();
 const server = http.createServer(app);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.options('*', cors());
 
 const { connectToDatabase } = require("./db.js");
 
@@ -60,15 +53,14 @@ const upload = multer({
 
 const io = socketIo(server, {
     cors: {
-        origin: '*',  // Allows any origin
-        methods: ['GET', 'POST', 'PUT', 'PATCH'],
-        allowedHeaders: ['Authorization'],
-        credentials: true,  // Allows cookies & authentication headers
+        origin: 'https://chatapp-gf0o.onrender.com/', // Allowed origin (your client URL)
+        methods: ['GET', 'POST', 'PUT', 'PATCH'],       // Allowed HTTP methods
+        allowedHeaders: ['Authorization'], // Allowed headers
+        credentials: true,              // Allow credentials like cookies
     },
 });
 
-
-
+// app.use("/api", uploadRoutes)
 
 const verifyToken = (req, res, next) => {
     // console.log("came for authentication");
@@ -99,18 +91,10 @@ const verifyToken = (req, res, next) => {
 
 // Middleware to verify token for socket connections
 
-
-
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
+    origin: 'https://chatapp-gf0o.onrender.com/', // Replace with your client's origin
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+    credentials: true // Allow cookies or credentials if required
 }));
 
 io.use((socket, next) => {
@@ -141,7 +125,7 @@ io.on('connection', async (socket) => {
     console.log('New client connected ✅');
     // console.log("the socket has the info about the user ->", socket.user);
 
-    const res = await fetch('https://chatapp-gf0o.onrender.com/rooms/allRooms', {
+    const res = await fetch('http://localhost:3000/rooms/allRooms', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
