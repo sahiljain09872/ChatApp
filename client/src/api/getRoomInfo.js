@@ -1,7 +1,7 @@
 export async function getRoomInfo(data){
     // this function will get the whole info about the room
     try{
-        const res = await fetch("http://localhost:3000/rooms/getRoomInfo" ,  {
+        const res = await fetch("https://chatverse-gld5.onrender.com/rooms/getRoomInfo" ,  {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
